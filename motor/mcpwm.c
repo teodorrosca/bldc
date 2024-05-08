@@ -118,9 +118,9 @@ static volatile float amp_fir_samples[AMP_FIR_LEN];
 static volatile int amp_fir_index = 0;
 
 // Current FIR filter
-#define CURR_FIR_TAPS_BITS		4
+#define CURR_FIR_TAPS_BITS		5
 #define CURR_FIR_LEN			(1 << CURR_FIR_TAPS_BITS)
-#define CURR_FIR_FCUT			0.15
+#define CURR_FIR_FCUT			0.04
 static volatile float current_fir_coeffs[CURR_FIR_LEN];
 static volatile float current_fir_samples[CURR_FIR_LEN];
 static volatile int current_fir_index = 0;

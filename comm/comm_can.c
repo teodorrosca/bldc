@@ -2128,6 +2128,13 @@ static void decode_msg(uint32_t eid, uint8_t *data8, int len, bool is_replaced) 
 		d->last_update = chVTGetSystemTimeX();
 	} break;
 
+	case CAN_PACKET_GET_CURRENT: {
+		int32_t send_index = 0;
+		uint8_t buffer[2];
+		buffer_append_int16(buffer, (int16_t)(mc_interface_get_tot_current_filtered() * 100.0), &send_index);
+		comm_can_transmit_eid(app_get_configuration()->controller_id | ((uint32_t)CAN_PACKET_GET_CURRENT << 8), buffer, send_index);
+	} break;
+
 	default:
 		break;
 	}
